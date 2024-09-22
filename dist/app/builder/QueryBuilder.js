@@ -45,5 +45,18 @@ class QueryBuilder {
         this.modelQuery = this.modelQuery.select(fields);
         return this;
     }
+    range() {
+        const range = this.query.range;
+        if (range) {
+            const newRange = range.split("-");
+            const lowestPrice = Number(newRange[0]);
+            const hiestprice = Number(newRange[1]);
+            // let rangevalue = newRange.map((range) => new RegExp(`^${range}$`, "i"));
+            this.modelQuery = this.modelQuery.find({
+                price: { $gte: lowestPrice, $lte: hiestprice },
+            });
+        }
+        return this;
+    }
 }
 exports.default = QueryBuilder;

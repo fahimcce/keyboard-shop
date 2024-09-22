@@ -11,17 +11,18 @@ const app: Application = express();
 //parsers
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors({ origin: "http://localhost:5173", credentials: true }));
+app.use(
+  cors({ origin: "https://keycaps-kingdom.vercel.app", credentials: true })
+);
 
 // application routes
 app.use("/api", router);
 
-const test = async (req: Request, res: Response) => {
-  const a = 10;
-  res.send(a);
-};
-
-app.get("/", test);
+app.get("/", (req: Request, res: Response) => {
+  res.status(200).json({
+    message: "Welcome to keyboard Shop backend API",
+  });
+});
 
 //global error handling
 app.use(globalErrorHandler);
