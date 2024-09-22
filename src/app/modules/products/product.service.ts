@@ -4,6 +4,17 @@ import { Tproducts } from "./product.interface";
 import { ProductModel } from "./product.model";
 
 const createProductToDB = async (payload: Tproducts) => {
+  // isExist product
+  const isExistProduct = await ProductModel.findOne({ Title: payload.Title });
+
+  if (isExistProduct) {
+    const result = await ProductModel.findOneAndUpdate(
+      { Title: payload.Title },
+      { $inc: { AvailableQuantity: payload.AvailableQuantity } },
+      { new: true, runValidators: true }
+    );
+    return result;
+  }
   const result = await ProductModel.create(payload);
   return result;
 };

@@ -1,14 +1,6 @@
-export type TProductOrder = {
-  Id: string;
-  Quantity: number;
-};
+import { z } from "zod";
+import { OrderValidations } from "./order.validation";
 
-export type Torder = {
-  name: string;
-  email: string;
-  phone: string;
-  address: string;
-  paymentMethod: string;
-  products: TProductOrder[];
-  totalAmount: number;
-};
+export type TOrder = z.infer<
+  typeof OrderValidations.CreateOrderValidationSchema
+>;

@@ -29,7 +29,7 @@ const getSingleProduct = catchAsync(async (req, res) => {
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: "Students are retrieved succesfully",
+    message: "Product retrieved succesfully",
     data: result,
   });
 });

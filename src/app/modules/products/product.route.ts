@@ -14,7 +14,7 @@ router.get("/", ProductController.getAllProducts);
 router.get("/:id", ProductController.getSingleProduct);
 router.patch(
   "/:id",
-  validateRequest(ProductValidaions.UpdateProductValidationSchema),
+  // validateRequest(ProductValidaions.UpdateProductValidationSchema),
   ProductController.updateProduct
 );
 router.delete("/:id", ProductController.deleteProduct);

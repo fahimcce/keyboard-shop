@@ -1,7 +1,7 @@
 import mongoose, { model, Schema } from "mongoose";
-import { Torder } from "./order.interface";
+import { TOrder } from "./order.interface";
 
-const orderSchema = new Schema<Torder>(
+const orderSchema = new Schema<TOrder>(
   {
     name: { type: String, required: true },
     email: { type: String, required: true },
@@ -10,14 +10,14 @@ const orderSchema = new Schema<Torder>(
     paymentMethod: { type: String, required: true },
     products: [
       {
-        Id: { type: String, ref: "Products", required: true, min: 1 },
-        Quantity: { type: Number, required: true },
+        productId: { type: String, ref: "Products", required: true, min: 1 },
+        productQuantity: { type: Number, required: true },
         _id: false,
       },
     ],
-    totalAmount: { type: Number, required: true },
+    totalAmout: { type: Number, required: true },
   },
   { timestamps: true }
 );
 
-export const Order = model<Torder>("orders", orderSchema);
+export const Order = model<TOrder>("order", orderSchema);
