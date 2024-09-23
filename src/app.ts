@@ -12,7 +12,10 @@ const app: Application = express();
 app.use(express.json());
 app.use(cookieParser());
 app.use(
-  cors({ origin: "https://keycaps-kingdom.vercel.app", credentials: true })
+  cors({
+    origin: "https://keyboard-shop-server-five.vercel.app/api",
+    credentials: true,
+  })
 );
 
 // application routes
